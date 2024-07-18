@@ -1,7 +1,8 @@
-import { Label, TextInput } from 'flowbite-react'
+import { Label, Select, TextInput } from 'flowbite-react'
 import React from 'react'
 
 function Register() {
+    
   return (
     <div className='w-full flex justify-center items-center bg-gray-300'>
         <div className='bg-white w-[750px] my-20 rounded-lg border-2 border-gray-700 shadow-slate-900 shadow-2xl opacity-75'>
@@ -62,15 +63,25 @@ function Register() {
                     <TextInput id='lAmount' type='text' name='lAmount'/>
                 </div >
                 <div className='flex gap-2 '>
-                   <Label htmlFor='number' className='p-2 text-md' value='RTO status ' />
-                    <TextInput id='number' type='number' />
-                </div >
+                   <Label htmlFor='rtoStatus' className='p-2 text-md' value='RTO status ' />
+                   <Select id='rtoStatus'>
+                        <option>RTO Status</option>
+                        <option>In Process</option>
+                        <option>Completed</option>
+                        <option>Hold</option>
+                        </Select>                   </div >
                 </div>
 
                 <div className='flex justify-around'>
                 <div className='flex gap-2 '>
-                   <Label htmlFor='number' className='p-2 text-md' value='Loan Type' />
-                    <TextInput id='number' type='number' />
+                   <Label htmlFor='lType' className='p-2 text-md' value='Loan Type' />
+                    <Select id='lType'>
+                        <option>Loan Type</option>
+                        <option>Purchase</option>
+                        <option>Refinance</option>
+                        <option>BT To Up</option>
+                        </Select>
+                    
                 </div >
                 <div className='flex justify-around'>
                    <Label htmlFor='rtoCharges' className='p-2 text-md ' value='RTO Charges' />
@@ -79,11 +90,11 @@ function Register() {
                 </div>
                 <div className='flex gap-14 mx-5 '>
                    <Label htmlFor='number' className='p-2 text-md' value='current Address' />
-                    <TextInput id='number'className='w-[400px]' type='number' />
+                    <TextInput id='number'className='w-[400px]' type='text' />
                 </div >
                 <div className='flex gap-10 mx-5'>
                    <Label htmlFor='number' className='p-2 text-md' value='Permanent Address' />
-                    <TextInput id='number' className='w-[400px]' type='number' />
+                    <TextInput id='number' className='w-[400px]' type='text' />
                 </div >
 
                 <div className='flex justify-center items-center'>
