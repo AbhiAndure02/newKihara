@@ -89,12 +89,12 @@ function Register() {
                 </div >
                 </div>
                 <div className='flex gap-14 mx-5 '>
-                   <Label htmlFor='number' className='p-2 text-md' value='current Address' />
-                    <TextInput id='number'className='w-[400px]' type='text' />
+                   <Label htmlFor='cAddress' className='p-2 text-md' value='current Address' />
+                    <TextInput id='cAddress'className='w-[400px]' type='text' />
                 </div >
                 <div className='flex gap-10 mx-5'>
-                   <Label htmlFor='number' className='p-2 text-md' value='Permanent Address' />
-                    <TextInput id='number' className='w-[400px]' type='text' />
+                   <Label htmlFor='pAddress' className='p-2 text-md' value='Permanent Address' />
+                    <TextInput id='pAddress' className='w-[400px]' type='text' />
                 </div >
 
                 <div className='flex justify-center items-center'>
