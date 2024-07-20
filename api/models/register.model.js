@@ -37,7 +37,7 @@ const registerSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    rstatus:{
+    rStatus:{
         type:String,
         default:"RTO Status",
 

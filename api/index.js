@@ -3,11 +3,12 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cookieParser from "cookie-parser";
 import authRoutes from './routes/auth.routes.js'
+import registerRouts from './routes/register.routes.js'
 
 dotenv.config();
 
 
-mongoose.connect(process.env.MONGO)
+mongoose.connect("mongodb://localhost:27017/kiharas")
 .then(()=>{
     console.log("connect to mongodb")
 })
@@ -22,10 +23,11 @@ app.use(cookieParser());
 
 
 app.listen(3001, () =>{
-    console.log("server is running on 3000 port ")
+    console.log("server is running on 3001 port ")
 });
 
 app.use('/api/auth', authRoutes)
+app.use('/api', registerRouts);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
