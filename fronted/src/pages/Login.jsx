@@ -1,10 +1,29 @@
 import React from 'react'
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signInSuccess } from '../redux/user/userSlice';
 
 function Login() {
+  const dispatch = useDispatch();
 
-    const handleSubmit =(e)=>{
+  const navigate = useNavigate();
+
+    const handleSubmit = async(e)=>{
         e.preventDefault();
+        const formData = new FormData(e.target)
+        const object = Object.fromEntries(formData.entries());
+        try{
+          const response = await axios.post('/api/auth/signin', {...object});
+          const token = response.data.access_token;
+          localStorage.setItem('token', token);
+          dispatch(signInSuccess(response.data))
+          navigate('/home?tab=dashboard')
+        }
+        catch(err){
+          console.log(err);
+        }
     }
   return (
  <>
@@ -13,15 +32,11 @@ function Login() {
         <h1 className='text-purple-700 text-center p-2 text-3xl  mt-6 font-bold'>KIHARAS FINANCE</h1>
         <h1 className='text-purple-700 text-center p-2 mt-10 text-2xl font-bold mb-6' >SIGN IN</h1>
         
-        <form onSubmit={handleSubmit} className="flex w-full flex-col gap-6 items-center">
- 
-       
-        
-        
-        <TextInput className='w-[350px] mb-1 text-black p-2 font-semibold' id="email1" type="email" placeholder="Enter your Email" required />
+        <form onSubmit={handleSubmit} className="flex w-full flex-col gap-6 items-center">      
+        <TextInput className='w-[350px] mb-1 text-black p-2 font-semibold' name='email' id="email1" type="email" placeholder="Enter your Email" required />
       
        
-        <TextInput className='w-[350px] text-black p-2 font-semibold' id="password1" type="password" placeholder='Password' required />
+        <TextInput className='w-[350px] text-black p-2 font-semibold' name="password" id="password1" type="password" placeholder='Password' required />
      
       <button className='mt-4 text-white bg-purple-700 hover:bg-gray-700 w-[100px] p-2 rounded-md font-xl' type="submit">Sign In</button>
     </form>
