@@ -1,10 +1,17 @@
 import mongoose from "mongoose";
 
 const registerSchema = new mongoose.Schema({
+  
     name:{
         type:String,
         required:true
         },
+    applicationId:{
+        type:String,
+        required:true,
+        unique:true
+
+    },
     number:{
         type:String,
         required:true
@@ -27,7 +34,6 @@ const registerSchema = new mongoose.Schema({
     },
     netDistribution:{
         type:String,
-        required:true,
     },
     hAmount:{
         type:String,
@@ -51,12 +57,37 @@ const registerSchema = new mongoose.Schema({
         required:true
 
     },
+    lpi:{
+        type:String,
+        required:true
+    },
+    moter:{
+        type:String,
+        required:true
+    },
+    tloanamount:{
+        type:String
+    },
+    deduction:{
+        type:String,
+        required:true
+    },
+    roi:{
+        type:String,
+        required:true
+    },
+
     cAddress:{
         type:String,
 
     },
     pAddress:{
         type:String,
+    },
+    slug:{
+        type:String,
+        required:true,
+        unique: true
     }
 
 
