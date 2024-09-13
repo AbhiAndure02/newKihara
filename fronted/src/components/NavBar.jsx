@@ -1,8 +1,19 @@
+import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png'
 import { FaBell } from "react-icons/fa";
+import axios from 'axios';
 
 
 function NavBar() {
+
+  const handleSignOut = async() =>{
+    try {
+      const res = await axios.post('api/auth/signout')
+      console.log(res.data)
+    } catch (e) {
+      console.log("error", e)
+    }
+    }
     return (
       <div className='p-1 flex justify-between bg-transparent'> {/* Set bg-transparent here */}
         <div className='flex items-center'>
@@ -13,10 +24,12 @@ function NavBar() {
         </div>
         <div className='flex gap-1'>
         <div className='font-bold text-3xl text-[#1974A6] pr-5 flex items-center'>
-          <FaBell />
+<Link to = 'notification'>
+<FaBell />
+</Link>
         </div>
         <div>
-          <button className='py-7 pr-2 text-[#1974A6] text-xl'>signout</button>
+          <button className='py-7 pr-2 text-[#1974A6] text-xl' onClick={handleSignOut}>signout</button>
         </div>
 
         </div>

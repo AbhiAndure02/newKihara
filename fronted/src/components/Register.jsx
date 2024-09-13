@@ -347,10 +347,10 @@ function Register() {
                                  {loanType === 'Purchase' && (
                             <div className='flex flex-wrap gap-10 mx-10'>
                                 <div className='flex flex-col'>
-                                <Label htmlFor='newCarDetails' className='p-1 text-md' value='RTO Hold' />
+                                <Label htmlFor='rHold' className='p-1 text-md' value='RTO Hold' />
                                 <input
-                                    id='rHold'
-                                    name='rHold'
+                                    id='prHold'
+                                    name='prHold'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -358,8 +358,8 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='fc' className='p-1 text-md' value='FC Amount' />
                                 <input
-                                    id='fc'
-                                    name='fc'
+                                    id='pfc'
+                                    name='pfc'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -367,8 +367,8 @@ function Register() {
                             <div className='flex flex-col'>
                                 <Label htmlFor='noc' className='p-1 text-md' value='For Noc Hold' />
                                 <input
-                                    id='noc'
-                                    name='noc'
+                                    id='pnoc'
+                                    name='pnoc'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -376,8 +376,8 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='pbank' className='p-1 text-md' value='Prev Bank Name' />
                                 <input
-                                    id='pBank'
-                                    name='pBank'
+                                    id='ppBank'
+                                    name='ppBank'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -385,8 +385,8 @@ function Register() {
                             <div className='flex flex-col'>
                                 <Label htmlFor='netpayto' className='p-1 text-md' value='Net Pay to' />
                                 <input
-                                    id='npt'
-                                    name='npt'
+                                    id='pnpt'
+                                    name='pnpt'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -395,8 +395,8 @@ function Register() {
                                 <div className='flex flex-col '>
                                 <Label htmlFor='customerPay' className='p-1 text-md' value='Amount' />
                                 <input
-                                    id='customerPay'
-                                    name='customerPay'
+                                    id='pcustomerPay'
+                                    name='pcustomerPay'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -405,10 +405,10 @@ function Register() {
 
                              
                             <div className='flex flex-col'>
-                                <Label htmlFor='newCarDetails' className='p-1 text-md' value='RTO Charges' />
+                                <Label htmlFor='rtoCharges' className='p-1 text-md' value='RTO Charges' />
                                 <input
-                                    id='rtoCharges'
-                                    name='rtoCharges'
+                                    id='prtoCharges'
+                                    name='prtoCharges'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -416,17 +416,17 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='rtoAgent' className='p-1 text-md' value='Rto Agent' />
                                 <input
-                                    id='rtoAgent'
-                                    name='rtoAgent'
+                                    id='prtoAgent'
+                                    name='prtoAgent'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'/>
                             </div>
 
                             <div className='flex flex-col'>
-                                <Label htmlFor='kiaharas' className='p-1 text-md' value='Kiharas' />
+                                <Label htmlFor='pkiaharas' className='p-1 text-md' value='Kiharas' />
                                 <input
-                                    id='kiharas'
-                                    name='kiharas'
+                                    id='pkiharas'
+                                    name='pkiharas'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -448,8 +448,8 @@ function Register() {
                                 <div className='flex flex-col'>
                                 <Label htmlFor='noc1' className='p-1 text-md' value='Noc' />
                                 <input
-                                    id='noc1'
-                                    name='noc1'
+                                    id='rnoc1'
+                                    name='rnoc1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -458,8 +458,8 @@ function Register() {
                                 <div className='flex flex-col '>
                                 <Label htmlFor='pbank1' className='p-1 text-md' value='Prev Bank Name' />
                                 <input
-                                    id='pBank1'
-                                    name='pBank1'
+                                    id='rpBank1'
+                                    name='rpBank1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -468,18 +468,18 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='fc1' className='p-1 text-md' value='FC Amount' />
                                 <input
-                                    id='fc1'
-                                    name='fc1'
+                                    id='rfc1'
+                                    name='rfc1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
                             </div>
                          
                                  <div className='flex flex-col '>
-                                <Label htmlFor='customerPay' className='p-1 text-md' value='Customer pay' />
+                                <Label htmlFor='rcustomerPay' className='p-1 text-md' value='Customer pay' />
                                 <input
-                                    id='customerPay1'
-                                    name='customerPay1'
+                                    id='rcustomerPay1'
+                                    name='rcustomerPay1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -487,8 +487,8 @@ function Register() {
                             <div className='flex flex-col'>
                                 <Label htmlFor='rHold1' className='p-1 text-md' value='RTO Hold' />
                                 <input
-                                    id='rHold1'
-                                    name='rHold1'
+                                    id='rrHold1'
+                                    name='rrHold1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -496,8 +496,8 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='rtoCharges1' className='p-1 text-md' value='RTO Charges' />
                                 <input
-                                    id='rtoCharges1'
-                                    name='rtoCharges1'
+                                    id='rrtoCharges1'
+                                    name='rrtoCharges1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -506,7 +506,7 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='kiharas1' className='p-1 text-md' value='Kiharas' />
                                 <input
-                                    id='kiharas1'
+                                    id='rkiharas1'
                                     name='kiharas1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
@@ -529,8 +529,8 @@ function Register() {
                                 <div className='flex flex-col '>
                                 <Label htmlFor='pBank1' className='p-1 text-md' value='Prev Bank' />
                                 <input
-                                    id='pBank1'
-                                    name='pBank1'
+                                    id='bpBank1'
+                                    name='bpBank1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -538,8 +538,8 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='fc2' className='p-1 text-md' value='FC' />
                                 <input
-                                    id='fc2'
-                                    name='fc2'
+                                    id='bfc2'
+                                    name='bfc2'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -547,8 +547,8 @@ function Register() {
                             <div className='flex flex-col'>
                                 <Label htmlFor='oAmount' className='p-1 text-md' value='Other Amount' />
                                 <input
-                                    id='oAmount'
-                                    name='oAmount'
+                                    id='boAmount'
+                                    name='boAmount'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -556,8 +556,8 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='customerPay2' className='p-1 text-md' value='Customer Pay' />
                                 <input
-                                    id='customerPay2'
-                                    name='customerPay2'
+                                    id='bcustomerPay2'
+                                    name='bcustomerPay2'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -565,8 +565,8 @@ function Register() {
                             <div className='flex flex-col'>
                                 <Label htmlFor='rHold2' className='p-1 text-md' value='Rto Hold' />
                                 <input
-                                    id='rHold2'
-                                    name='rHold2'
+                                    id='brHold2'
+                                    name='brHold2'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -574,8 +574,8 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='rtoCharges2' className='p-1 text-md' value='RTO Charges' />
                                 <input
-                                    id='rtoCharges2'
-                                    name='rtoCharges2'
+                                    id='brtoCharges2'
+                                    name='brtoCharges2'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -583,8 +583,8 @@ function Register() {
                             <div className='flex flex-col'>
                                 <Label htmlFor='rAgent' className='p-1 text-md' value='RTO Agent' />
                                 <input
-                                    id='rAgent'
-                                    name='rAgent'
+                                    id='brAgent'
+                                    name='brAgent'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
@@ -592,8 +592,8 @@ function Register() {
                                  <div className='flex flex-col '>
                                 <Label htmlFor='kiharas2' className='p-1 text-md' value='Kiharas' />
                                 <input
-                                    id='kiharas2'
-                                    name='kiharas2'
+                                    id='bkiharas2'
+                                    name='bkiharas2'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />

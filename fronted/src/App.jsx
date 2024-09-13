@@ -9,6 +9,7 @@ import NavBar from './components/NavBar'
 import MiniNavBar from './components/MiniNavBar'
 import Schema from './pages/Schema'
 import Reports from './pages/Reports'
+import Notification from './pages/Notification'
 
 
 function App() {
@@ -19,12 +20,13 @@ function App() {
     <MiniNavBar />
    <Routes>
     
-    <Route path="/" element={<Login/>}/>
+    <Route path="/login" element={<Login/>}/>
     <Route element ={<PrivateRoute />} >
     <Route path='/register' element={<Register/>} />
-    <Route path='/home' element={<Dashboard/>} />
+    <Route path='/' element={<Dashboard/>} />
     <Route path= '/scheme' element = {<Schema/>} /> 
     <Route path='/report' element={<Reports/>} />
+    <Route path ='notification' element={<Notification />} />
     <Route path = '/home/register/:slug' element={<DataPage />}/>
     </Route>
    </Routes>

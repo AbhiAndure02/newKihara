@@ -3,32 +3,68 @@ import { errorHandler } from '../utils/error.js'
 
 export const register = async (req, res, next) => {
     try {
+        // Extract fields from the request body
         const {
             name,
             number,
+            number2,
             rNumber,
             city,
             vName,
             bank,
-            netDistribution,
+            netdesb,
             hAmount,
             lAmount,
             rStatus,
             lType,
             rtoCharges,
             cAddress,
+            otherbank,
             lpi,
             moter,
             tloanamount,
             deduction,
             roi,
-            pAddress
+            sname,
+            newCarD,
+            prHold,
+            pfc,
+            pnoc,
+            ppBank,
+            pnpt,
+            pcustomerPay,
+            prtoCharges,
+            prtoAgent,
+            pkiharas,
+            rnoc1,
+            rpBank1,
+            rfc1,
+            rcustomerPay1,
+            rrHold1,
+            rrtoCharges1,
+            rkiharas1,
+            bpBank1,
+            bfc2,
+            boAmount,
+            bcustomerPay2,
+            brHold2,
+            brtoCharges2,
+            brAgent,
+            bkiharas2,
+            flat,
+            pf,
+            vc,
+            sd,
+            document,
+            other
         } = req.body;
 
-        // Check if all required fields are provided
-        if (!name || !number || !rNumber || !city || !vName || !bank  || !hAmount || !lAmount || !rStatus || !lType || !rtoCharges|| !roi|| !lpi || !moter  || !deduction) {
-            return res.status(400).json({ error: 'Please fill all the fields' });
+        // Validate required fields
+        if (!name || !number || !rNumber || !city || !vName || !bank  || !lAmount || !rStatus || !lType  || !roi || !lpi || !moter || !deduction) {
+            return res.status(400).json({ error: 'Please fill all the required fields' });
         }
+
+        // Generate unique applicationId
         const generateId = async () => {
             const prefix = 'KF';
             const date = new Date();
@@ -47,45 +83,74 @@ export const register = async (req, res, next) => {
         // Generate a slug from the lAmount field
         const slug = lAmount.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '-');
         console.log(slug)
-        
-
-        // Create a new registration object
+        // Create a new registration document
         const newRegistration = new Registration({
             name,
             number,
+            number2,
             rNumber,
             city,
             vName,
             bank,
-            netDistribution,
+            netdesb,
             hAmount,
             lAmount,
             rStatus,
             lType,
             rtoCharges,
             cAddress,
-            pAddress,
+            otherbank,
             lpi,
             moter,
             tloanamount,
             deduction,
             roi,
+            sname,
+            newCarD,
+            prHold,
+            pfc,
+            pnoc,
+            ppBank,
+            pnpt,
+            pcustomerPay,
+            prtoCharges,
+            prtoAgent,
+            pkiharas,
+            rnoc1,
+            rpBank1,
+            rfc1,
+            rcustomerPay1,
+            rrHold1,
+            rrtoCharges1,
+            rkiharas1,
+            bpBank1,
+            bfc2,
+            boAmount,
+            bcustomerPay2,
+            brHold2,
+            brtoCharges2,
+            brAgent,
+            bkiharas2,
+            flat,
+            pf,
+            vc,
+            sd,
+            document,
+            other,
             applicationId,
-            slug,
+            slug
         });
 
+        // Save the new registration document to the database
+        await newRegistration.save();
 
-        // Save the new registration to the database
-        const saveRegister = await newRegistration.save();
-
-        // Respond with the saved registration
-        return res.status(201).json({ saveRegister });
+        // Respond with the created registration
+        res.status(201).json(newRegistration);
     } catch (error) {
-        return res.status(500).json({ error: 'Something went wrong' });
-       
+        // Pass errors to Express error handler
+        next(error);
     }
-}
-
+};
 
 export const getRegistrationData = async (req, res, next) => {
     try {
