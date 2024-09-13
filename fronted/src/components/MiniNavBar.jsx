@@ -9,11 +9,10 @@ function MiniNavBar() {
         <Link to='home'>Home</Link>
         </div>
         <Link to='register'>New Application</Link>
-        <Link>Scheme</Link>
-        <Link>PayOut</Link>
+        <Link to='scheme'>Scheme</Link>
+        <Link >PayOut</Link>
         <Link>Bank</Link>
-        <Link>Signout</Link>
-
+        <Link to = 'report'>Reports</Link>
         
       
     </div>

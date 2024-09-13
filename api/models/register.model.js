@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const registerSchema = new mongoose.Schema({
   
-    name:{
+    name:{//done
         type:String,
         required:true
         },
@@ -12,19 +12,22 @@ const registerSchema = new mongoose.Schema({
         unique:true
 
     },
-    number:{
+    number:{//done
         type:String,
         required:true
     },
-    rNumber:{
+    number2:{//done
+        type:String
+    },
+    rNumber:{//done
         type:String,
         required:true,
     },
-    city:{
+    city:{//done
         type:String,
         required:true,
     },
-    vName:{
+    vName:{//done
         type:String,
         required:true,
     },
@@ -72,18 +75,29 @@ const registerSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    roi:{
+    roi:{//done
         type:String,
         required:true
     },
 
-    cAddress:{
+    cAddress:{//done
         type:String,
 
     },
-    pAddress:{
+    otherbank:{
+        type:String
+    },
+    femi:{//done
+        type:Date,
+    },
+    lAmount:{
         type:String,
     },
+
+    flat:{
+        type:String,
+    },
+ 
     slug:{
         type:String,
         required:true,
