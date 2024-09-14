@@ -19,7 +19,7 @@ function Login() {
           const token = response.data.access_token;
           localStorage.setItem('token', token);
           dispatch(signInSuccess(response.data))
-          navigate('/home?tab=dashboard')
+          navigate('/register')
         }
         catch(err){
           console.log(err);

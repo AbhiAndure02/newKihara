@@ -43,7 +43,6 @@ const DataPage = () =>{
             <p>{register.number}</p>
             <p>{register.lType}</p>
             <p>{register.lAmount}</p>
-            <p>{register.hAmount}</p>
             <p> netDisbursion : {register.netDistribution}</p>
 
             <p>Status: {register.rStatus}</p>

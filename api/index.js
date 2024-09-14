@@ -8,7 +8,7 @@ import registerRouts from './routes/register.routes.js'
 dotenv.config();
 
 
-mongoose.connect("mongodb://localhost:27017/kiharas")
+mongoose.connect("mongodb+srv://abhiandure123:techinfosync@techinfosync.rcznby2.mongodb.net/?retryWrites=true&w=majority&appName=techinfosync")
 .then(()=>{
     console.log("connect to mongodb")
 })

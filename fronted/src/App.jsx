@@ -27,7 +27,7 @@ function App() {
     <Route path= '/scheme' element = {<Schema/>} /> 
     <Route path='/report' element={<Reports/>} />
     <Route path ='notification' element={<Notification />} />
-    <Route path = '/home/register/:slug' element={<DataPage />}/>
+    <Route path = '/register/:slug' element={<DataPage />}/>
     </Route>
    </Routes>
    </BrowserRouter>

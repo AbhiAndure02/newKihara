@@ -78,10 +78,12 @@ export const register = async (req, res, next) => {
             return `${prefix}${month}${year}${serial}`;
         };
         const applicationId = await generateId();
-
-        
-        // Generate a slug from the lAmount field
-        const slug = lAmount.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '-');
+        const slugBase = `${name} ${lAmount}`;
+        const slug = slugBase
+            .toLowerCase()
+            .split(' ')
+            .join('-')
+            .replace(/[^a-z0-9-]/g, '-');
         console.log(slug)
         // Create a new registration document
         const newRegistration = new Registration({
@@ -145,7 +147,7 @@ export const register = async (req, res, next) => {
         await newRegistration.save();
 
         // Respond with the created registration
-        res.status(201).json(newRegistration);
+        res.status(201).json(applicationId);
     } catch (error) {
         // Pass errors to Express error handler
         next(error);

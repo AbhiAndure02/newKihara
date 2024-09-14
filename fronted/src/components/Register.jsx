@@ -20,6 +20,7 @@ function Register() {
     const [did, setdid] = useState("")
     const [addData, setAddData] = useState("");
     const [loanType, setLoanType] = useState("");
+    const [res, setRes] = useState("")
     console.log(banks)
 
 
@@ -56,6 +57,7 @@ function Register() {
             }
             const object = Object.fromEntries(formData.entries());
             const res = await axios.post('/api/register', {netDistribution:deductionAmount,tloanamount:totalAmount,...object});
+            setRes(res.data)
 
             if (res.status === 201) {
                 // If the request is successful, open the modal
@@ -624,8 +626,7 @@ function Register() {
                         <div className='text-center'>
                             <HiOutlineExclamationCircle className='mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200' />
                             <h3 className='mb-5 text-lg font-normal text-gray-500 dark:text-gray-400'>
-                                Registration successful!
-                            </h3>
+                                {res}                            </h3>
                             <div className='flex justify-center gap-4'>
                                 <Button color='success' onClick={() => setOpenModal(false)}>
                                     Ok
