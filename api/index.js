@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import cookieParser from "cookie-parser";
 import authRoutes from './routes/auth.routes.js'
 import registerRouts from './routes/register.routes.js'
+import path from 'path'
 
 dotenv.config();
 
@@ -17,6 +18,13 @@ mongoose.connect("mongodb+srv://abhiandure123:techinfosync@techinfosync.rcznby2.
 })
 
 const app = express();
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/fronted/dist')));
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'fronted', 'dist', 'index.html'))
+})
+
 app.use(express.json());
 app.use(cookieParser());
 
