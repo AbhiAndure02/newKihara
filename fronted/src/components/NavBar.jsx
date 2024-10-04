@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.png'
 import { FaBell } from "react-icons/fa";
 import axios from 'axios';
 
 
 function NavBar() {
+  const navigate = useNavigate();
+
 
   const handleSignOut = async() =>{
     try {
       const res = await axios.post('api/auth/signout')
-      console.log(res.data)
+      navigate('/login')
     } catch (e) {
       console.log("error", e)
     }

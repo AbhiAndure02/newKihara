@@ -51,7 +51,7 @@ export const signin = async (req, res, next) => {
       }
       const token = jwt.sign(
         { id: validUser._id, isAdmin: validUser.isAdmin },
-        process.env.JWT_SECRET
+        "kiharas"
       );
   
       const { password: pass, ...rest } = validUser._doc;
@@ -69,7 +69,7 @@ export const signin = async (req, res, next) => {
 
   export const signout = async (req, res, next) => {
     try {
-        res.clearCookie('access_token').status(200).json('User has been signed out');
+       await res.clearCookie('access_token').status(200).json('User has been signed out');
     } catch (error) {
         next(error);
     }
