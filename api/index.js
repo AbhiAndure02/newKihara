@@ -8,7 +8,7 @@ import registerRouts from './routes/register.routes.js'
 dotenv.config();
 
 
-mongoose.connect("mongodb+srv://abhiandure123:techinfosync@techinfosync.rcznby2.mongodb.net/?retryWrites=true&w=majority&appName=techinfosync")
+mongoose.connect(process.env.MONGO)
 .then(()=>{
     console.log("connect to mongodb")
 })
@@ -22,10 +22,10 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+const Port = 3000 || process.env.PORT
 
-
-app.listen(3001, () =>{
-    console.log("server is running on 3001 port ")
+app.listen(Port, () =>{
+    console.log(`server is running on ${Port} port `)
 });
 
 app.use('/api/auth', authRoutes)
