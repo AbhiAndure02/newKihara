@@ -21,7 +21,7 @@ function Dashboard() {
 
   const handleSearch = (term) => {
     const filtered = data.filter(item =>
-      item.name.toLowerCase().includes(term.toLowerCase()) 
+      item.name.toLowerCase().includes(term.toLowerCase()) ||  item.applicationId.toLowerCase().includes(term.toLowerCase())
     );
     setFilteredData(filtered);
   };

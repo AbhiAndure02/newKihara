@@ -5,6 +5,6 @@ import { verifyToken } from "../utils/verifyUser.js";
 const router = express.Router();
 
 router.post('/register', register);
-router.get('/getregister',verifyToken, getRegistrationData);
+router.get('/getregister', getRegistrationData);
 
 export default router;

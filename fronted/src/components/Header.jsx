@@ -10,7 +10,10 @@ function Header({onSearch}) {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    onSearch(e.target.value); // Pass the search term to the parent component
+    onSearch(e.target.value); 
+    onSearch(searchTerm.name) || onSearch(searchTerm.applicationId)
+
+
   };
   return (
     <div className='p-2 flex  justify-center mb-4 bg-gray-100'>

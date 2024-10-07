@@ -163,7 +163,7 @@ export const getRegistrationData = async (req, res, next) => {
         const registerData = await Registration.find({
             ...(req.query.registerId && { _id: req.query.registerId }),
             ...(req.query.name && { name: req.query.name }),
-            ...(req.query.number && { number: req.query.number }),
+            ...(req.query.applicationId && { applicationId: req.query.applicationId }),
             ...(req.query.rNumber && { rNumber: req.query.rNumber }),
             ...(req.query.city && { city: req.query.city }),
             ...(req.query.vName && { vName: req.query.vName }),
@@ -179,8 +179,7 @@ export const getRegistrationData = async (req, res, next) => {
             ...(req.query.searchTerm && {
                 $or: [
                     { name: { $regex: req.query.searchTerm, $options: 'i' } },
-                    { city: { $regex: req.query.searchTerm, $options: 'i' } },
-                    { vName: { $regex: req.query.searchTerm, $options: 'i' } }
+                    { applicationId:{ $regex: req.query.searchTerm, $options:'i'}}
                 ],
             }),
         })
