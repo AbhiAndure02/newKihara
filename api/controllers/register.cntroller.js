@@ -203,3 +203,24 @@ export const getRegistrationData = async (req, res, next) => {
         next(error);
     }
 };
+
+
+export const updateRegister = async (req, res, next) => {
+    try {
+        const { registerId } = req.params; 
+        const updateFields = req.body;
+
+        const registration = await Registration.findById(registerId);
+        if (!registration) {
+            return res.status(404).json({ error: 'Registration not found' });
+        }
+
+     
+        Object.assign(registration, updateFields);
+        await registration.save();
+
+        res.status(200).json({ message: 'Registration updated successfully', registration });
+    } catch (error) {
+        next(error);
+    }
+};

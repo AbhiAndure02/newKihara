@@ -1,13 +1,25 @@
 import axios from 'axios';
-import { Button, Label, Select } from 'flowbite-react';
-import React, { useEffect, useState} from 'react'
-import banks from '../components/bankName'
-
+import { Label, Select } from 'flowbite-react';
+import React, { useEffect, useState } from 'react';
+import banks from '../components/bankName';
 
 const Reports = () => {
+  const [warning, setWarning] = useState("");
+  const [data, setData] = useState({});
+  const [report, setReport] = useState("");
+  const [bankName, setBankName] = useState("");
 
-
-  const [report, setreport] = useState("")
+  const handleProceed = (e) => {
+    e.preventDefault();
+    if (report === "tpe") {
+      setWarning("Please select a Type");
+    } else if (report === "bank" && !bankName) {
+      setWarning("Please select a bank name");
+    } else {
+      setWarning(""); // Clear warning if everything is fine
+      // Proceed with the logic
+    }
+  };
 
   useEffect(() => {
     const registerData = async () => {
@@ -16,7 +28,8 @@ const Reports = () => {
         setData(response.data.registerData); // Access the `registerData` array from the response
         console.log(response.data); // Log the fetched data
       } catch (error) {
-        console.log(error);
+        console.log("Error fetching data:", error);
+        setWarning("Failed to fetch data. Please try again."); // User-friendly message
       }
     };
     registerData();
@@ -24,43 +37,46 @@ const Reports = () => {
 
   return (
     <>
-    <div className='flex w-[50%] justify-center pl-10 mx-10 mt-5 flex-col'>
-    <Label htmlFor='select' className='p-2 text-md' value='Select Report By' />
-    <Select id='rStatus' name='rStatus' required onChange={(e)=> setreport(e.target.value)}>
-        <option value=''>select Type</option>
-        <option value='bank'>By Bank Name </option>
-        <option value='byperson'>By Person</option>
-        <option value='month'>by month</option>
+      <div className='flex w-[50%] justify-center pl-10 mx-10 mt-5 flex-col'>
+        <Label htmlFor='datatype' className='p-2 text-md' value='Select Report By' />
+        <Select id='datatype' name='datatype' required onChange={(e) => setReport(e.target.value)}>
+          <option value='tpe'>Select Type</option>
+          <option value='bank'>By Bank Name</option>
+          <option value='byperson'>By Person</option>
+          <option value='month'>By Month</option>
+        </Select>
+      </div> 
+      <div className='flex w-[50%] justify-center pl-10'>
+        {
+          report === 'bank' && (
+            <div className='w-[50%] justify-center pl-10 m-10 flex'>
+              <Label htmlFor='bank' className='p-2 text-md' value='Bank Name' />
+              <Select 
+                id='bank' 
+                name='bank' 
+                className='w-[155px] h-8 bottom-1 rounded-md items-center py-1' 
+                required 
+                onChange={(e) => setBankName(e.target.value)}
+              >
+                <option value="">Select Bank</option>
+                {banks.map((bank) => (
+                  <option key={bank.id} value={bank.name}>{bank.name}</option>
+                ))}
+                <option value="other">Other</option>
+              </Select>
+            </div>
+          )
+        }
+        <div className='flex flex-col gap-5'>
 
-
-    </Select>
-</div> 
-<div className='flex w-[50%] justify-center pl-10 '>
-  {
-    report === 'bank' && (
-      <div className=' w-[50%] justify-center pl-10 m-10 flex'>
-         <Label htmlFor='bank' className='p-2 text-md' value='Bank Name ' />
-                                <Select id='bank' name='bank'className='w-[155px] h-8 bottom-1 rounded-md items-center py-1' type='text' required onChange={(e)=> setbankname(e.target.value)} >
-                                    <option value="">select Bank</option>
-                                    {
-                                        banks.map((bank) => (
-                                            <option key={bank.id} value={bank.name}>{bank.name}</option>
-                                            ))
-                                    }
-                                    <option value="other">other</option>
-                                    {/* <option value="Idfc">Idfc</option>
-                                    <option value="Idfc">Idfc</option>
-                                    <option value="Idfc">Idfc</option> */}
-
-                                    </Select>
+        <button className='h-10  bg-black text-white px-5 mt-10 rounded-md' onClick={handleProceed}>
+          Process
+        </button>
+        <span className='text-red-500 '>{warning}</span>
         </div>
-      
-    )
-  }
-  <button className='h-20'>Process</button>
-</div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Reports
+export default Reports;
