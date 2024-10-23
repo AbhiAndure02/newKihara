@@ -153,14 +153,14 @@ export const register = async (req, res, next) => {
         next(error);
     }
 };
-
 export const getRegistrationData = async (req, res, next) => {
     try {
-        const startIndex =  0;
         const limit = parseInt(req.query.limit) || 10;
+        const page = parseInt(req.query.page) || 1; // Default to page 1
+        const startIndex = (page - 1) * limit; // Calculate startIndex based on the page
         const sortDirection = req.query.order === 'asc' ? 1 : -1;
 
-        const registerData = await Registration.find({
+        const filter = {
             ...(req.query.registerId && { _id: req.query.registerId }),
             ...(req.query.name && { name: req.query.name }),
             ...(req.query.applicationId && { applicationId: req.query.applicationId }),
@@ -179,15 +179,17 @@ export const getRegistrationData = async (req, res, next) => {
             ...(req.query.searchTerm && {
                 $or: [
                     { name: { $regex: req.query.searchTerm, $options: 'i' } },
-                    { applicationId:{ $regex: req.query.searchTerm, $options:'i'}}
+                    { applicationId: { $regex: req.query.searchTerm, $options: 'i' } }
                 ],
             }),
-        })
-        .sort({ updatedAt: sortDirection })
-        .skip(startIndex)
-        .limit(limit);
+        };
 
-        const totalRegistrations = await Registration.countDocuments();
+        const registerData = await Registration.find(filter)
+            .sort({ updatedAt: sortDirection })
+            .skip(startIndex)
+            .limit(limit);
+
+        const totalRegistrations = await Registration.countDocuments(filter);
         const now = new Date();
         const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
         const lastMonthRegistrations = await Registration.countDocuments({
@@ -197,9 +199,12 @@ export const getRegistrationData = async (req, res, next) => {
         res.status(200).json({
             registerData,
             totalRegistrations,
-            lastMonthRegistrations
+            lastMonthRegistrations,
+            currentPage: page,
+            totalPages: Math.ceil(totalRegistrations / limit),
         });
     } catch (error) {
+        console.error('Error fetching registration data:', error); // Log the error
         next(error);
     }
 };
@@ -224,3 +229,4 @@ export const updateRegister = async (req, res, next) => {
         next(error);
     }
 };
+

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { Label, Select } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
+import { CSVLink } from 'react-csv'; // Import CSVLink
 import banks from '../components/bankName';
 
 const Reports = () => {
   const [warning, setWarning] = useState("");
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [report, setReport] = useState("");
   const [bankName, setBankName] = useState("");
 
@@ -25,7 +26,7 @@ const Reports = () => {
     const registerData = async () => {
       try {
         const response = await axios.get('/api/getregister');
-        setData(response.data.registerData); // Access the `registerData` array from the response
+        setData(response.data.registerData || []); // Access the `registerData` array from the response
         console.log(response.data); // Log the fetched data
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -34,6 +35,21 @@ const Reports = () => {
     };
     registerData();
   }, []);
+
+  // Prepare CSV data
+  const csvData = data.map(item => ({
+    id: item.id,
+    name: item.name,
+    amount: Number(item.lAmount) || 0, // Convert to number
+  }));
+
+  // Calculate total amount
+  const totalAmount = csvData.reduce((acc, item) => acc + (item.amount || 0), 0);
+  
+  // Add total amount as the last row
+  if (totalAmount > 0) {
+    csvData.push({ id: 'Total', name: '', amount: totalAmount });
+  }
 
   return (
     <>
@@ -68,11 +84,20 @@ const Reports = () => {
           )
         }
         <div className='flex flex-col gap-5'>
+          <button className='h-10 bg-black text-white px-5 mt-10 rounded-md' onClick={handleProceed}>
+            Process
+          </button>
+          <span className='text-red-500'>{warning}</span>
 
-        <button className='h-10  bg-black text-white px-5 mt-10 rounded-md' onClick={handleProceed}>
-          Process
-        </button>
-        <span className='text-red-500 '>{warning}</span>
+          {/* CSV Download Button */}
+          <CSVLink
+            data={csvData}
+            filename={"report.csv"}
+            className='h-10 bg-green-600 text-white px-5 mt-10 rounded-md'
+            target="_blank"
+          >
+            Download CSV
+          </CSVLink>
         </div>
       </div>
     </>

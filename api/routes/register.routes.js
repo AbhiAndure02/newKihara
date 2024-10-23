@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/register', register);
 router.get('/getregister', getRegistrationData);
-router.put('/registrations/:registerId', updateRegister)
 
+router.put('/registrations/:registerId', updateRegister)
 export default router;
