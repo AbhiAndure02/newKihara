@@ -62,8 +62,6 @@ const DataPage = () => {
                         <p>Vehicle Name: {registerData.vName}</p>
                         <p>Bank Name : {registerData.bank}</p>
                         <p>Loan Amount : {registerData.lAmount}</p>
-
-
                         <p>Loan Type: {registerData.lType}</p>
 
                         {
@@ -168,7 +166,12 @@ const DataPage = () => {
                                         <Modal.Header />
                                         BT TO UP
                                         <Modal.Body>
-                                            hello this is BT TOP Up
+                                            <form>
+                                                <div>
+                                                <label></label>
+                                                <input type='text' placeholder='RTO Charges' name='brtoCharges2' id='brtoCharges2' className=''></input>
+                                                </div>
+                                            </form>
 
                                         </Modal.Body>
                                     </Modal>
