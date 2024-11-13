@@ -139,17 +139,17 @@ const DataPage = () => {
 
                                                 <div className='flex flex-col w-[40%]'>
                                                     <label> RTO Agent</label>
-                                                    <input type='text' placeholder='RTO Agent' name='prtoAgent' id='prtoAgent' c className='p-1 rounded-md'/>
+                                                    <input type='text' placeholder='RTO Agent' name='prtoAgent' id='prtoAgent' className='p-1 rounded-md'/>
                                                 </div>
 
                                                 <div className='flex flex-col w-[40%]'>
                                                     <label> Kiharas</label>
-                                                    <input type='text' placeholder='Kiharas' name='pkiharas' id='pkiharas' c className='p-1 rounded-md' />
+                                                    <input type='text' placeholder='Kiharas' name='pkiharas' id='pkiharas' className='p-1 rounded-md' />
                                                 </div>
 
                                                 <div className='flex flex-col w-[40%]'>
                                                     <label>Customer Pay </label>
-                                                    <input type='text' placeholder='customer Pay' name='pcustomerPay' id='pcustomerPay'  className='p-1 rounded-md' />
+                                                    <input type='text' placeholder='customer Pay' name='pcustomerPay' id='pcustomerPay'  className='p-1 rounded-md' value={registerData.pcustomerPay} />
                                                 </div>
 
                                                 <div className='flex flex-col w-[40%]'>
@@ -331,7 +331,7 @@ const DataPage = () => {
                         }
 
                         {
-                            registerData.lType === 'Refinace' ? (
+                            registerData.lType === 'Refinance' ? (
                                 <>
                                     <p>RTO Charges: {registerData.rrtoCharges1}</p>
                                     <p>NOC : {registerData.rnoc1}</p>
@@ -340,13 +340,77 @@ const DataPage = () => {
                                     <p>Prve Bank: {registerData.rpBank1}</p>
                                     <p>RTO Hold: {registerData.rrHold1}</p>
                                     <p>Kiharas: {registerData.rkiharas1}</p>
+                                    <p>RTO Agent: {registerData.rrtoAgent1}</p>
 
 
                                     <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} >
                                         <Modal.Header />
-                                        Refinace
+                                        <h1 className='text-center mb-10 font-bold'>Purchase</h1>
                                         <Modal.Body>
-                                            hello this is Refinace
+                                            <form className='flex flex-col justify-center items-center'>
+                                                <div className='w-full flex flex-wrap justify-center items-center gap-5 mb-3'>
+
+                                              
+                                                <div className='flex flex-col'>
+                                                    <Label htmlFor='rStatus' className='p-2 text-md' value='RTO Status *' />
+                                                    <Select id='rStatus' name='rStatus' >
+                                                        <option value=''>RTO Status</option>
+                                                        <option value='Not Applicable'>Not Applicable</option>
+                                                        <option value='In Process'>In Process</option>
+                                                        <option value='Completed'>Completed</option>
+                                                        <option value='Hold'>Hold</option>
+                                                    </Select>
+                                                </div>
+                                                <div className='flex flex-col w-[40%] gap-2'>
+                                                    <label> RTO Charges</label>
+                                                    <input type='text' placeholder='RTO Charges' name='rrtoCharges1' id='rrtoCharges1' className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label> RTO Agent</label>
+                                                    <input type='text' placeholder='RTO Agent' name='rrtoAgent1' id='rrtoAgent1' className='p-1 rounded-md'/>
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label> Kiharas</label>
+                                                    <input type='text' placeholder='Kiharas' name='rkiharas1' id='rkiharas1' className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Customer Pay </label>
+                                                    <input type='text' placeholder='customer Pay' name='rcustomerPay1' id='rcustomerPay1' className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>RTO Hold </label>
+                                                    <input type='text' placeholder='RTO Hold' name='rrHold1' id='rrHold1'  className='p-1 rounded-md'/>
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Noc Hold </label>
+                                                    <input type='text' placeholder='Noc Hold' name='rnoc1' id='rnoc1'  className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Prev Bank </label>
+                                                    <input type='text' placeholder='Previous bank' name='rpBank1' id='rpBank1' className='p-1 rounded-md' />
+                                                </div>
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Net Pay to </label>
+                                                    <input type='text' placeholder='Net Pay To' name='pnpt' id='pnpt' className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>FC Amount </label>
+                                                    <input type='text' placeholder='FC Amount' name='rfc1' id='rfc1' className='p-1 rounded-md'/>
+                                                </div>
+                                                </div>
+
+                                                <div className='flex gap-3'>
+                                                    <button onClick={handleUpdate} className='bg-green-600 px-3 py-2 rounded-md'>Update</button>
+                                                    <button onClick={() => setOpenModal(false)} className='bg-red-700 px-3 py-2 rounded-md'>cancel</button>
+                                                </div>
+                                            </form>
 
                                         </Modal.Body>
                                     </Modal>
