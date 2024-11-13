@@ -113,63 +113,80 @@ const DataPage = () => {
 
 
 
+                                 
                                     <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} >
                                         <Modal.Header />
+                                        <h1 className='text-center mb-10 font-bold'>Purchase</h1>
                                         <Modal.Body>
-                                            <div className='space-y-6'>
-                                                <h3 className="text-xl font-medium text-gray-900 dark:text-white">Update Purchase</h3>
+                                            <form onSubmit={handleUpdate} className='flex flex-col justify-center items-center'>
+                                                <div className='w-full flex flex-wrap justify-center items-center gap-5 mb-3'>
 
-                                                <form onSubmit={handlePurchaseSubmit}>
-                                                    <div className='flex flex-wrap gap-10'>
-                                                        <div className='flex flex-col'>
-                                                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                RTO Charges
-                                                            </label>
-                                                            <input className='w-32' type="text" />
-                                                        </div>
-                                                        <div className='flex flex-col'>
-                                                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                RTO Charges
-                                                            </label>
-                                                            <input className='w-32' type="text" />
-                                                        </div>
-                                                        <div className='flex flex-col'>
-                                                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                RTO Charges
-                                                            </label>
-                                                            <input className='w-32' type="text" />
-                                                        </div>
-                                                        <div className='flex flex-col'>
-                                                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                RTO Charges
-                                                            </label>
-                                                            <input className='w-32' type="text" />
-                                                        </div>
-                                                        <div className='flex flex-col'>
-                                                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                RTO Charges
-                                                            </label>
-                                                            <input className='w-32' type="text" />
-                                                        </div>
-                                                        <div className='flex flex-col'>
-                                                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                RTO Charges
-                                                            </label>
-                                                            <input className='w-32' type="text" />
-                                                        </div>
+                                              
+                                                <div className='flex flex-col'>
+                                                    <Label htmlFor='rStatus' className='p-2 text-md' value='RTO Status *' />
+                                                    <Select id='rStatus' name='rStatus' >
+                                                        <option value=''>RTO Status</option>
+                                                        <option value='Not Applicable'>Not Applicable</option>
+                                                        <option value='In Process'>In Process</option>
+                                                        <option value='Completed'>Completed</option>
+                                                        <option value='Hold'>Hold</option>
+                                                    </Select>
+                                                </div>
+                                                <div className='flex flex-col w-[40%] gap-2'>
+                                                    <label> RTO Charges</label>
+                                                    <input type='text' placeholder='RTO Charges' name='prtoCharges' id='prtoCharges' className='p-1 rounded-md' />
+                                                </div>
 
-                                                    </div>
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label> RTO Agent</label>
+                                                    <input type='text' placeholder='RTO Agent' name='prtoAgent' id='prtoAgent' c className='p-1 rounded-md'/>
+                                                </div>
 
-                                                    <div className='flex justify-between'>
-                                                        <button onClick={() => setOpenModal(false)} className='bg-red-700 text-white font-bold mt-2 px-4 py-2 rounded-md'>cancel</button>
-                                                        <button className='bg-black text-white font-bold mt-2 px-4 py-2 rounded-md' type='submit'>Update</button>
-                                                        
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label> Kiharas</label>
+                                                    <input type='text' placeholder='Kiharas' name='pkiharas' id='pkiharas' c className='p-1 rounded-md' />
+                                                </div>
 
-                                                    </div>
-                                                </form>
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Customer Pay </label>
+                                                    <input type='text' placeholder='customer Pay' name='pcustomerPay' id='pcustomerPay'  className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>RTO Hold </label>
+                                                    <input type='text' placeholder='RTO Hold' name='prHold' id='prHold'  className='p-1 rounded-md'/>
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Noc Hold </label>
+                                                    <input type='text' placeholder='Noc Hold' name='pnoc' id='pnoc'  className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Prev Bank </label>
+                                                    <input type='text' placeholder='Previous bank' name='ppBank' id='ppBank' className='p-1 rounded-md' />
+                                                </div>
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>Net Pay to </label>
+                                                    <input type='text' placeholder='Net Pay To' name='pnpt' id='pnpt' className='p-1 rounded-md' />
+                                                </div>
+
+                                                <div className='flex flex-col w-[40%]'>
+                                                    <label>FC Amount </label>
+                                                    <input type='text' placeholder='FC Amount' name='pfc' id='pfc' className='p-1 rounded-md'/>
+                                                </div>
+                                                </div>
+
+                                                <div className='flex gap-3'>
+                                                    <button type='submit' className='bg-green-600 px-3 py-2 rounded-md'>Update</button>
+                                                    <button onClick={() => setOpenModal(false)} className='bg-red-700 px-3 py-2 rounded-md'>cancel</button>
+                                                </div>
 
 
-                                            </div>
+
+
+
+                                            </form>
 
                                         </Modal.Body>
                                     </Modal>
