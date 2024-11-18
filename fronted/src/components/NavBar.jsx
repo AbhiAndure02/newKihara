@@ -25,11 +25,13 @@ function NavBar() {
           KIHARAS FINANCE
         </div>
         <div className='flex gap-1'>
-        <div className='font-bold text-3xl text-[#1974A6] pr-5 flex items-center'>
+        <div className='font-bold text-3xl text-[#1974A6] pr-6 flex items-center'>
 <Link to = 'notification'>
-<FaBell />
+<FaBell  />
+
 </Link>
         </div>
+    
         <div>
           <button className='py-7 pr-2 text-[#1974A6] text-xl' onClick={handleSignOut}>signout</button>
         </div>

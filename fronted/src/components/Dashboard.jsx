@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import { Link } from 'react-router-dom';
+import { Spinner } from 'flowbite-react';
 
 function Dashboard() {
   const [data, setData] = useState([]);
@@ -39,11 +40,18 @@ function Dashboard() {
   };
 
   if (loading) {
-    return <p>Loading...</p>; // Show loading indicator
+    return(
+      <div className='flex h-screen justify-center items-center'>
+        <Spinner size='xl' />
+      </div>
+    )  // Show loading indicator
   }
 
   if (error) {
-    return <p>{error}</p>; // Show error message
+    return(
+      <div className='flex h-screen justify-center items-center'>
+   <p className='text-red-800'>{error}</p>   </div>
+    )
   }
 
   return (

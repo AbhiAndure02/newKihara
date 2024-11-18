@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {  useNavigate, useParams } from 'react-router-dom';
-import { Button, Checkbox, Label, Modal, Select, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, Modal, Select, Spinner, TextInput } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 
@@ -50,6 +50,8 @@ const DataPage = () => {
 
     useEffect(() => {
         const getRegiData = async () => {
+            setLoading(true)
+
             try {
                 console.log(`Fetching product with slug: ${slug}`);
                 const res = await axios.get(`/api/getregister?slug=${slug}`);
@@ -60,12 +62,19 @@ const DataPage = () => {
                     // Check if the slug in the response matches the requested slug
                     const filteredData = res.data.registerData.find(item => item.slug === slug);
                     if (filteredData) {
-                        setRegisterData(filteredData); // Store the correct entry
+                        setRegisterData(filteredData); 
+                        setLoading(false)
+
+                        // Store the correct entry
                     } else {
                         setError('No products found for this slug');
+                        setLoading(false)
+
                     }
                 } else {
                     setError('No products found for this slug');
+                    setLoading(false)
+
                 }
             } catch (error) {
                 console.error('Error fetching the product:', error);
@@ -78,13 +87,15 @@ const DataPage = () => {
     }, [slug]);
 
     if (loading) {
-        return <p>Loading...</p>; // Show loading indicator while data is being fetched
+        return (
+        <div className='w-full h-screen flex justify-center items-center'>
+
+            <Spinner size ='md' />
+        </div>
+        )
     }
 
-    const handlePurchaseSubmit = async (e) => {
-        e.preventDefault();
-
-    }
+  
     return (
         <div className='w-full h-screen flex justify-center bg-[#1974A6]'>
             {error && <p>{error}</p>} {/* Show error message if any */}
