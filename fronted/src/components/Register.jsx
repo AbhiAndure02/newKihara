@@ -3,10 +3,11 @@ import { Label, Modal, Select, Button } from 'flowbite-react';
 import React, { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
-import banks from './bankName';
+import banks from '../helper/bankName';
 
 function Register() {
-    const { currentUser } = useSelector((state) => state.user);
+    const {currentUser} = useSelector(state=>state.user)
+
 
     const [openModal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(false); // Loading state
@@ -56,7 +57,7 @@ function Register() {
                 formData.set('pAddress', formData.get('cAddress'));
             }
             const object = Object.fromEntries(formData.entries());
-            const res = await axios.post('/api/register', {netDistribution:deductionAmount,tloanamount:totalAmount,...object});
+            const res = await axios.post('/api/register', {netDistribution:deductionAmount,tloanamount:totalAmount,userId:currentUser._id, ...object});
             setRes(res.data)
 
             if (res.status === 201) {
@@ -518,7 +519,7 @@ function Register() {
                                 <Label htmlFor='kiharas1' className='p-1 text-md' value='Kiharas' />
                                 <input
                                     id='rkiharas1'
-                                    name='kiharas1'
+                                    name='rkiharas1'
                                     type='text'
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />

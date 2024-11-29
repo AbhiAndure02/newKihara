@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const registerSchema = new mongoose.Schema({
+    userId:{
+        type:String,
+        required:true,
+    },
 
     name: {//done
         type: String,
@@ -191,6 +195,11 @@ const registerSchema = new mongoose.Schema({
     },
     other: {
         type: String,
+    },
+    createdDate:{
+        type:Date
+        
+
     },
 
     slug: {

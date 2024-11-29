@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Label, Select } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { CSVLink } from 'react-csv'; // Import CSVLink
-import banks from '../components/bankName';
+import banks from '../helper/bankName';
 
 const Reports = () => {
   const [warning, setWarning] = useState("");

@@ -7,9 +7,10 @@ import registerRouts from './routes/register.routes.js'
 import path from 'path';
 
 dotenv.config();
+//
+//mongoose.connect("mongodb+srv://abhiandure123:techinfosync@techinfosync.rcznby2.mongodb.net/?retryWrites=true&w=majority&appName=techinfosync
 
-
-mongoose.connect("mongodb+srv://abhiandure123:techinfosync@techinfosync.rcznby2.mongodb.net/?retryWrites=true&w=majority&appName=techinfosync")
+mongoose.connect("mongodb://Abhishek:Abhi%40123@127.0.0.1:27017/kiharas")
 .then(()=>{
     console.log("connect to mongodb")
 })

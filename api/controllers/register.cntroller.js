@@ -5,6 +5,8 @@ export const register = async (req, res, next) => {
     try {
         // Extract fields from the request body
         const {
+            userId,
+            createdDate,
             name,
             number,
             number2,
@@ -62,8 +64,8 @@ export const register = async (req, res, next) => {
 
         // Validate required fields
         if (!name || !number || !rNumber || !city || !vName || !bank  || !lAmount || !rStatus || !lType  || !roi || !lpi || !moter || !deduction) {
-            return res.status(400).json({ error: 'Please fill all the required fields' });
-        }
+            return next(errorHandler(403, "all fields are required"))        }
+
 
         // Generate unique applicationId
         const generateId = async () => {
@@ -88,6 +90,8 @@ export const register = async (req, res, next) => {
         console.log(slug)
         // Create a new registration document
         const newRegistration = new Registration({
+            createdDate: new Date(),
+            userId,
             name,
             number,
             number2,
@@ -219,8 +223,8 @@ export const updateRegister = async (req, res, next) => {
 
         const registration = await Registration.findById(registerId);
         if (!registration) {
-            return res.status(404).json({ error: 'Registration not found' });
-        }
+            return next(errorHandler(403, "Registraion not foud"))       
+         }
 
      
         Object.assign(registration, updateFields);
@@ -238,7 +242,7 @@ export const deleteRegister = async (req, res, next) => {
         // Find the registration by ID and delete it
         const registration = await Registration.findByIdAndDelete(registerId);
         if (!registration) {
-            return res.status(404).json({ error: 'Registration not found' });
+           return next(errorHandler('Registration not found'))
         }
 
         res.status(200).json({ message: 'Registration deleted successfully' });

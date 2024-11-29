@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {  useNavigate, useParams } from 'react-router-dom';
 import { Button, Checkbox, Label, Modal, Select, Spinner, TextInput } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { useSelector } from 'react-redux';
 
 
 
@@ -15,6 +16,7 @@ const DataPage = () => {
     const [ConfirmDelete, setConfirmDelete] = useState(false)
     const [updateData, setUpdateData] = useState({});
     const navigate = useNavigate();
+    const {currentUser} = useSelector(state => state.user)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -311,6 +313,8 @@ const DataPage = () => {
                                     <p>Show Room Name: {registerData.sname}</p>
                                     <p>Car Details : {registerData.newCarD}</p>
 
+                                    
+
 
                                     <Modal className='rounded-md' show={openModal} size="md" popup onClose={() => setOpenModal(false)} >
                                         <Modal.Header />
@@ -446,8 +450,20 @@ const DataPage = () => {
 
                     </div>
                     <div className='w-full flex  gap-10 justify-center items-center'>
-                        <button onClick={() => setOpenModal(true)} className='mt-10 text-xl bg-black px-5 py-2 rounded-md text-white'>Update</button>
-                        <button onClick={()=>setConfirmDelete(true)} className='mt-10 text-xl bg-red-700 px-5 py-2 rounded-md text-white'>Delete</button>
+                        {
+                            registerData.userId === currentUser._id ? 
+                            (
+                                <>
+                                <button onClick={() => setOpenModal(true)} className='mt-10 text-xl bg-black px-5 py-2 rounded-md text-white'>Update</button>
+                                <button onClick={() => setConfirmDelete(true)} className='mt-10 text-xl bg-red-600 px-5 py-2 rounded-md text-white'>Delete</button>
+                                
+                                </>
+
+                            ):
+                            <p className='p-5 mt-8 text-red-500 text-xl'>You are not allow to update and delete</p>
+
+                        }
+                        
 
                     </div>
 
@@ -457,7 +473,7 @@ const DataPage = () => {
                 <p>No data found</p>
             )}
 
-<Modal show={ConfirmDelete} size="md" onClose={() => ConfirmDelete(false)} popup>
+<Modal show={ConfirmDelete} size="md" onClose={() => setConfirmDelete(false)} popup>
         <Modal.Header />
         <Modal.Body>
           <div className="text-center">
