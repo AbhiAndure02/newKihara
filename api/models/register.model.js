@@ -14,6 +14,9 @@ const registerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    li:{
+        type:String,
+    },
     number: {//done
         type: String,
         required: true
@@ -73,6 +76,9 @@ const registerSchema = new mongoose.Schema({
     roi: {//done
         type: String,
         required: true
+    },
+    admin:{
+        type: String,
     },
     sname: {
         type: String,
@@ -198,7 +204,7 @@ const registerSchema = new mongoose.Schema({
     },
     createdDate:{
         type:Date
-        
+
 
     },
 

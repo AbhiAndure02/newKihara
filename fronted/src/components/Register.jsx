@@ -293,7 +293,7 @@ function Register() {
                             <div className='flex flex-col'>
 
                                 <Label htmlFor='netdesb' className='p-2 text-md' value='Net Disbursment *' />
-                                <input id='netdesb' name='netdesb' className='w-[160px] h-8 bottom-1 rounded-md items-center py-1'  type='text' disabled value={parseInt(loanAmount) - (parseInt(li)+parseInt(doc)+parseInt(sd)+parseInt(pf)+ parseInt(vc) + parseInt(other))} required />
+                                <input id='netdesb' name='netdesb' className='w-[160px] h-8 bottom-1 rounded-md items-center py-1'  type='text' value={parseInt(loanAmount) - (parseInt(li)+parseInt(doc)+parseInt(sd)+parseInt(pf)+ parseInt(vc) + parseInt(other))} required />
                             </div>
                             <div className='flex flex-col'>
                                 <Label htmlFor='rStatus' className='p-2 text-md' value='RTO Status *' />
@@ -394,6 +394,15 @@ function Register() {
                                     className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
                                 />
                                 </div>
+                                <div className='flex flex-col'>
+                                <Label htmlFor='rtoCharges' className='p-1 text-md' value='RTO Charges' />
+                                <input
+                                    id='prtoCharges'
+                                    name='prtoCharges'
+                                    type='text'
+                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
+                                />
+                                </div>
 
                                 <div className='flex flex-col '>
                                 <Label htmlFor='customerPay' className='p-1 text-md' value='Amount' />
@@ -407,15 +416,7 @@ function Register() {
 
 
                              
-                            <div className='flex flex-col'>
-                                <Label htmlFor='rtoCharges' className='p-1 text-md' value='RTO Charges' />
-                                <input
-                                    id='prtoCharges'
-                                    name='prtoCharges'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
+                         
                                  <div className='flex flex-col '>
                                 <Label htmlFor='rtoAgent' className='p-1 text-md' value='Rto Agent' />
                                 <input

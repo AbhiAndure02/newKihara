@@ -7,6 +7,7 @@ export const register = async (req, res, next) => {
         const {
             userId,
             createdDate,
+            femi,
             name,
             number,
             number2,
@@ -16,6 +17,7 @@ export const register = async (req, res, next) => {
             bank,
             netdesb,
             hAmount,
+            li,
             lAmount,
             rStatus,
             lType,
@@ -55,6 +57,7 @@ export const register = async (req, res, next) => {
             brAgent,
             bkiharas2,
             flat,
+            admin,
             pf,
             vc,
             sd,
@@ -63,7 +66,7 @@ export const register = async (req, res, next) => {
         } = req.body;
 
         // Validate required fields
-        if (!name || !number || !rNumber || !city || !vName || !bank  || !lAmount || !rStatus || !lType  || !roi || !lpi || !moter || !deduction) {
+        if (!name || !number || !rNumber || !city || !vName || !bank  || !lAmount || !rStatus || !lType  || !roi || !lpi || !moter || !deduction || !femi) {
             return next(errorHandler(403, "all fields are required"))        }
 
 
@@ -100,12 +103,14 @@ export const register = async (req, res, next) => {
             vName,
             bank,
             netdesb,
+            li,
             hAmount,
             lAmount,
             rStatus,
             lType,
             rtoCharges,
             cAddress,
+            femi,
             otherbank,
             lpi,
             moter,
@@ -121,6 +126,7 @@ export const register = async (req, res, next) => {
             ppBank,
             pnpt,
             pcustomerPay,
+            admin,
             prtoCharges,
             prtoAgent,
             pkiharas,

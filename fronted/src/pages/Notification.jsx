@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setNotificationsCount } from '../redux/notification/notificationSlice';
+import monthBetweenDtaseIST from '../helper/monthCalculator';
 
 const Notification = () => {
 
@@ -16,7 +17,6 @@ const Notification = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [noOfNotifications, setNoOfNotifications] = useState(0); // Initialize state
 
   useEffect(() => {
     const registerData = async () => {
@@ -38,8 +38,12 @@ const Notification = () => {
   // Filter data where showNotification is true
   const notifications = filteredData.filter(item => {
     const daysAgo = item.createdDate ? daysBetweenDatesIST(item.createdDate) : 0;
-    return daysAgo === 0 && item.rStatus === 'In Process';
+    const monthAgo = item.femi ? monthBetweenDtaseIST(item.femi) : 0;
+    console.log(monthAgo);
+    return monthAgo >=9 || (daysAgo > 29 && item.rStatus === 'In Process');
   });
+
+  
 
   // Update the notification count when `notifications` changes
   useEffect(() => {
@@ -79,13 +83,12 @@ const Notification = () => {
   return (
     <div className='p-4 w-full bg-slate-100'>
       <Header onSearch={handleSearch} />
-      <h2 className='text-xl font-bold mb-4'>
-        Notifications: {noOfNotifications}
-      </h2> {/* Display notification count */}
+    {/* Display notification count */}
 
       {notifications.length > 0 ? (
         notifications.map((item) => {
           const daysAgo = item.createdDate ? daysBetweenDatesIST(item.createdDate) : "Invalid date";
+          const monthAgo = item.femi ? monthBetweenDtaseIST(item.femi) : "Invalid date";
 
           return (
             <div key={item._id} className='flex flex-col gap-5 mb-2 w-full'>
@@ -95,7 +98,12 @@ const Notification = () => {
                     <h1>{item.name}</h1>
                   </div>
                   <div className='px-2 py-3'>
-                    <p>Your RTO status is in process for <span className='text-red-500'>{daysAgo}</span> days</p>
+                    {
+                      item.rStatus === 'In Process' && (
+                        <p>Your RTO status is in process for <span className='text-red-500'>{daysAgo}</span> days</p>
+                      )
+                    }
+                    <p>First EMI date is <span className='text-red-500'>{monthAgo}</span> months ago</p>
                   </div>
                 </div>
               </Link>
@@ -103,7 +111,10 @@ const Notification = () => {
           );
         })
       ) : (
-        <p>No data available</p> // Show when no notifications meet the condition
+        <div className='flex h-[550px] justify-center items-center'>
+        
+        <p>No data available</p>
+        </div>
       )}
     </div>
   );

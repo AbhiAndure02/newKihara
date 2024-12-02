@@ -93,7 +93,7 @@ const Reports = () => {
           <CSVLink
             data={csvData}
             filename={"report.csv"}
-            className='h-10 bg-green-600 text-white px-5 mt-10 rounded-md'
+            className=' bg-green-600 text-white  py-5 mt-10 rounded-md'
             target="_blank"
           >
             Download CSV

@@ -1,12 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaBell } from "react-icons/fa";
 import logo from '../assets/images/logo.png';
 import { CgProfile } from "react-icons/cg";
+import axios from 'axios';
+import { UserSignOutSuccess } from '../redux/user/userSlice';
 
 function NavBar() {
   const notificationsCount = useSelector((state) => state.notifications.notificationsCount); // Access count
   const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
 
 
 
@@ -49,15 +52,11 @@ const handleSignOut = async () => {
         </div>
 
         <div>
-          {user ? (
+        
             <button className='py-6 pr-5 text-[#1974A6] text-xl' onClick={handleSignOut}>
               Signout
             </button>
-          ) : (
-            <button className='py-6 pr-5 text-black text-3xl'>
-              <CgProfile />
-            </button>
-          )}
+        
         </div>
       </div>
     </div>
