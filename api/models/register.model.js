@@ -92,7 +92,10 @@ const registerSchema = new mongoose.Schema({
     pfc: {
         type: String
     },
-    pnoc: {
+    pnoc:{
+        type: String
+    },
+    PoAmount: {
         type: String
     },
     ppBank: {
@@ -167,6 +170,12 @@ const registerSchema = new mongoose.Schema({
     },
     otherbank: {
         type: String
+    },
+    rOtherAmount:{
+        type: String,
+    },
+    bnoc:{
+        type:String
     },
     femi: {//done
         type: Date,

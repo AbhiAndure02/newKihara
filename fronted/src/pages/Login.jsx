@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInSuccess } from '../redux/user/userSlice';
 
@@ -40,6 +40,10 @@ function Login() {
         <TextInput className='w-[350px] text-black p-2 font-semibold' name="password" id="password1" type="password" placeholder='Password' required />
      
       <button className='mt-4 text-white bg-[#1974A6] hover:bg-gray-700 w-[100px] p-2 rounded-md font-xl' type="submit">Sign In</button>
+      <p>
+        Don't have an account? <Link to ='/signup'>Sign Up</Link>
+
+        </p>  
     </form>
 
     

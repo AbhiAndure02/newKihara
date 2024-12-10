@@ -10,6 +10,8 @@ import MiniNavBar from './components/MiniNavBar';
 import Schema from './pages/Schema';
 import Reports from './pages/Reports';
 import Notification from './pages/Notification';
+import Signup from './pages/Signup';
+import UpdateRegister from './components/UpdateRegister';
 
 function App() {
     return (
@@ -18,8 +20,10 @@ function App() {
             <MiniNavBar />
             <Routes>
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route element={<PrivateRoute />}>
                     <Route path="/register" element={<Register />} />
+                    <Route path="/update/:slug" element={<UpdateRegister />} />
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/scheme" element={<Schema />} />
                     <Route path="/report" element={<Reports />} />

@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
 import banks from '../helper/bankName';
+import NewCar from '../models/NewCar';
+import Purchase from '../models/Purchase';
+import Refinace from '../models/Refinace';
+import BtTopUp from '../models/BtTopUp';
 
 function Register() {
     const {currentUser} = useSelector(state=>state.user)
-
-
     const [openModal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(false); // Loading state
     const [error, setError] = useState(null); // Error state
@@ -47,7 +49,6 @@ function Register() {
         setLoading(true); // Start loading
         setError(null); // Reset error 
 
-  
        
 
         try {
@@ -145,11 +146,7 @@ function Register() {
                         </div>
                          
                         </div>
-
-
-                      
-                        
-                            
+   
                             <div className='flex justify-between gap-10 mx-5'>
 
                             <div className='flex flex-col gap-2'>
@@ -244,12 +241,7 @@ function Register() {
                                 <input id='tLAmount' name='tLAmount' className='w-[160px] h-8 bottom-1 rounded-md items-center py-1'  type='text' value={parseInt(loanAmount) + parseInt(mia) +parseInt(mia2)+ parseInt(lpi)}required disabled />
                             </div>
 
-                            
-
                         </div>
-
-
-
 
                         <div className='flex justify-between mx-5'>
                         <div className='flex flex-col'>
@@ -272,14 +264,9 @@ function Register() {
                                 <Label htmlFor='LI' className='p-2 text-md' value='Li' />
                                 <input id='li' name='li' type='text' className='w-[160px] h-8 bottom-1 rounded-md items-center py-1'  required onChange={(e)=> setli(e.target.value)}/>
                             </div>
-
-                        
-                           
+       
                             </div>
                     
-
-
-
                         <div className='flex justify-between mx-5'>
 
                         <div className='flex flex-col'>
@@ -316,302 +303,27 @@ function Register() {
                                 </Select>
                             </div>
                         
-                        
                         </div>
                         
                         {loanType === 'New Car' && (
-                            <div className='flex gap-20'>
-                                <div className='flex flex-col'>
-                                <Label htmlFor='newCarDetails' className='p-1 text-md' value='Show Room Name' />
-                                <input
-                                    id='sname'
-                                    name='sname'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='newCarDetails' className='p-1 text-md' value='New Car Details' />
-                                <input
-                                    id='newCarD'
-                                    name='newCarD'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            </div>
+                            <NewCar />
                             
                         )}
-
-
-
 
 
                                  {loanType === 'Purchase' && (
-                            <div className='flex flex-wrap gap-10 mx-10'>
-                                <div className='flex flex-col'>
-                                <Label htmlFor='rHold' className='p-1 text-md' value='RTO Hold' />
-                                <input
-                                    id='prHold'
-                                    name='prHold'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='fc' className='p-1 text-md' value='FC Amount' />
-                                <input
-                                    id='pfc'
-                                    name='pfc'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            <div className='flex flex-col'>
-                                <Label htmlFor='noc' className='p-1 text-md' value='For Noc Hold' />
-                                <input
-                                    id='pnoc'
-                                    name='pnoc'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='pbank' className='p-1 text-md' value='Prev Bank Name' />
-                                <input
-                                    id='ppBank'
-                                    name='ppBank'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            <div className='flex flex-col'>
-                                <Label htmlFor='netpayto' className='p-1 text-md' value='Net Pay to' />
-                                <input
-                                    id='pnpt'
-                                    name='pnpt'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                <div className='flex flex-col'>
-                                <Label htmlFor='rtoCharges' className='p-1 text-md' value='RTO Charges' />
-                                <input
-                                    id='prtoCharges'
-                                    name='prtoCharges'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-
-                                <div className='flex flex-col '>
-                                <Label htmlFor='customerPay' className='p-1 text-md' value='Amount' />
-                                <input
-                                    id='pcustomerPay'
-                                    name='pcustomerPay'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-
-
-                             
-                         
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='rtoAgent' className='p-1 text-md' value='Rto Agent' />
-                                <input
-                                    id='prtoAgent'
-                                    name='prtoAgent'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'/>
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <Label htmlFor='pkiaharas' className='p-1 text-md' value='Kiharas' />
-                                <input
-                                    id='pkiharas'
-                                    name='pkiharas'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-
-                            
-                            </div>
-                            
+                          <Purchase deductionAmount={deductionAmount} />
                         )}
-
-
-
-
-
 
                         {/* Refinance */}
                          {loanType === 'Refinance' && (
-                            <div className='flex flex-wrap gap-10'>
-                                <div className='flex flex-col'>
-                                <Label htmlFor='noc1' className='p-1 text-md' value='Noc' />
-                                <input
-                                    id='rnoc1'
-                                    name='rnoc1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-
-                                <div className='flex flex-col '>
-                                <Label htmlFor='pbank1' className='p-1 text-md' value='Prev Bank Name' />
-                                <input
-                                    id='rpBank1'
-                                    name='rpBank1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            <div className='flex flex-col '>
-                                <Label htmlFor='rrtoagent1' className='p-1 text-md' value='RTO Agent' />
-                                <input
-                                    id='rrtoAgent1'
-                                    name='rrtoAgent1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='fc1' className='p-1 text-md' value='FC Amount' />
-                                <input
-                                    id='rfc1'
-                                    name='rfc1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                         
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='rcustomerPay' className='p-1 text-md' value='Customer pay' />
-                                <input
-                                    id='rcustomerPay1'
-                                    name='rcustomerPay1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            <div className='flex flex-col'>
-                                <Label htmlFor='rHold1' className='p-1 text-md' value='RTO Hold' />
-                                <input
-                                    id='rrHold1'
-                                    name='rrHold1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='rtoCharges1' className='p-1 text-md' value='RTO Charges' />
-                                <input
-                                    id='rrtoCharges1'
-                                    name='rrtoCharges1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                           
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='kiharas1' className='p-1 text-md' value='Kiharas' />
-                                <input
-                                    id='rkiharas1'
-                                    name='rkiharas1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            </div>
+                           <Refinace deductionAmount={deductionAmount} />
                             
                         )}
 
-
-
-                        
-
-
-
-
                         {/* BT TOP UP */}
                         {loanType === 'BT Top Up' && (
-                            <div className='flex flex-wrap gap-10'>
-                                <div className='flex flex-col '>
-                                <Label htmlFor='pBank1' className='p-1 text-md' value='Prev Bank' />
-                                <input
-                                    id='bpBank1'
-                                    name='bpBank1'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='fc2' className='p-1 text-md' value='FC' />
-                                <input
-                                    id='bfc2'
-                                    name='bfc2'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            <div className='flex flex-col'>
-                                <Label htmlFor='oAmount' className='p-1 text-md' value='Other Amount' />
-                                <input
-                                    id='boAmount'
-                                    name='boAmount'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='customerPay2' className='p-1 text-md' value='Customer Pay' />
-                                <input
-                                    id='bcustomerPay2'
-                                    name='bcustomerPay2'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            <div className='flex flex-col'>
-                                <Label htmlFor='rHold2' className='p-1 text-md' value='Rto Hold' />
-                                <input
-                                    id='brHold2'
-                                    name='brHold2'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='rtoCharges2' className='p-1 text-md' value='RTO Charges' />
-                                <input
-                                    id='brtoCharges2'
-                                    name='brtoCharges2'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            <div className='flex flex-col'>
-                                <Label htmlFor='rAgent' className='p-1 text-md' value='RTO Agent' />
-                                <input
-                                    id='brAgent'
-                                    name='brAgent'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                                </div>
-                                 <div className='flex flex-col '>
-                                <Label htmlFor='kiharas2' className='p-1 text-md' value='Kiharas' />
-                                <input
-                                    id='bkiharas2'
-                                    name='bkiharas2'
-                                    type='text'
-                                    className='w-[350px] h-8 bottom-1 rounded-md items-center py-1'
-                                />
-                            </div>
-                            </div>
+                          <BtTopUp  deductionAmount = {deductionAmount}/>
                             
                         )}
                         {error && (
